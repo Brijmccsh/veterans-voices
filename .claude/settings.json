@@ -1,0 +1,51 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(npx --version)",
+      "Bash(rm -rf vvtmp)",
+      "Bash(npx create-expo-app@latest vvtmp --template default --yes)",
+      "Bash(rsync -a --exclude=.git /private/tmp/vvtmp/ /Users/brijeshtiwari/veterans-voices/)",
+      "Bash(printf 'legacy-peer-deps=true\\\\n')",
+      "Bash(grep -q '^\\\\.env$' .gitignore)",
+      "Bash(npx expo *)",
+      "Bash(sips -g pixelWidth -g pixelHeight \"Veterans' Voices App Logo.png\")",
+      "Bash(sips -s format png -z 1024 1024 \"Veterans' Voices App Logo.png\" --out assets/images/icon.png)",
+      "Bash(sips -s format png -z 1024 1024 \"Veterans' Voices App Logo.png\" --out assets/images/splash-icon.png)",
+      "Bash(sips -s format png -z 1024 1024 \"Veterans' Voices App Logo.png\" --out assets/images/android-icon-foreground.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight assets/images/icon.png)",
+      "Bash(node -e \"const p=require\\('./package.json'\\);console.log\\(Object.keys\\(p.dependencies\\).sort\\(\\).join\\('\\\\n'\\)\\)\")",
+      "Bash(cd /Users/brijeshtiwari/veterans-voices *)",
+      "Bash(command -v say)",
+      "Bash(echo \"say: $\\(command -v say\\)\")",
+      "Bash(command -v afconvert)",
+      "Bash(echo \"afconvert: $\\(command -v afconvert\\)\")",
+      "Bash(command -v ffmpeg)",
+      "Bash(say -v '?')",
+      "Bash(node -e \"console.log\\(Object.keys\\(require\\('@expo-google-fonts/playfair-display'\\)\\).join\\('\\\\n'\\)\\)\")",
+      "Bash(node -e \"console.log\\(Object.keys\\(require\\('@expo-google-fonts/source-sans-3'\\)\\).join\\('\\\\n'\\)\\)\")",
+      "Bash(node -e \"const a=require\\('expo-audio'\\); console.log\\(Object.keys\\(a\\).sort\\(\\).join\\('\\\\n'\\)\\)\")",
+      "Bash(sed -n '/export type AudioStatus/,/^};/p' node_modules/expo-audio/build/AudioModule.types.d.ts)",
+      "Bash(sed -n '/export interface AudioStatus/,/^}/p' node_modules/expo-audio/build/AudioModule.types.d.ts)",
+      "Bash(break)",
+      "Bash(npm view *)",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>{const v=JSON.parse\\(d\\).filter\\(x=>x.startsWith\\('56.'\\)\\);console.log\\(v.slice\\(-6\\).join\\('\\\\n'\\)\\)}\\)\")",
+      "Bash(npm remove *)",
+      "Bash(node -e \"console.log\\(require\\('./package.json'\\).dependencies.expo\\)\")",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/expo/package.json'\\).version\\)\")",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>{try{const j=JSON.parse\\(d\\);console.log\\('name:',j.name\\);console.log\\('sdkVersion:',j.sdkVersion\\);console.log\\('slug:',j.slug\\)}catch\\(e\\){console.log\\('could not parse; raw tail:'\\);console.log\\(d.slice\\(-400\\)\\)}}\\)\")",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\).on\\('end',\\(\\)=>{const j=JSON.parse\\(d\\);console.log\\('name:',j.name,'| slug:',j.slug,'| sdkVersion:',j.sdkVersion\\)}\\)\")",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/expo/package.json'\\).version.split\\('.'\\)[0]\\)\")",
+      "Bash(echo \"sdkVersion from expo pkg: $\\(node -e \"console.log\\(require\\('./node_modules/expo/package.json'\\).version.split\\('.'\\)[0]\\)\"\\).0.0\")",
+      "Bash(ls MEMORY.md)",
+      "Bash(cat MEMORY.md)",
+      "Bash(cp \"/System/Library/Fonts/Supplemental/Georgia.ttf\" /tmp/vvserif.ttf)",
+      "Bash(cp \"/System/Library/Fonts/Supplemental/Georgia Bold.ttf\" /tmp/vvserifb.ttf)",
+      "Bash(ffmpeg -y -loglevel error -f lavfi -i color=c=0x0F2340:s=720x1280:r=30 -i src/assets/audio/vasquez.m4a -filter_complex_script /tmp/vvfilter.txt -map [v] -map 1:a -c:v libx264 -pix_fmt yuv420p -profile:v baseline -level 3.1 -c:a aac -b:a 128k -shortest -movflags +faststart src/assets/video/vasquez.mp4)",
+      "Bash(ffprobe -v error -show_entries format=duration -show_entries stream=codec_name,width,height -of default=noprint_wrappers=1 src/assets/video/vasquez.mp4)"
+    ],
+    "additionalDirectories": [
+      "/Users/brijeshtiwari/veterans-voices/assets/images"
+    ]
+  }
+}
