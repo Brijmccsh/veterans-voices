@@ -42,7 +42,9 @@
       "Bash(cp \"/System/Library/Fonts/Supplemental/Georgia.ttf\" /tmp/vvserif.ttf)",
       "Bash(cp \"/System/Library/Fonts/Supplemental/Georgia Bold.ttf\" /tmp/vvserifb.ttf)",
       "Bash(ffmpeg -y -loglevel error -f lavfi -i color=c=0x0F2340:s=720x1280:r=30 -i src/assets/audio/vasquez.m4a -filter_complex_script /tmp/vvfilter.txt -map [v] -map 1:a -c:v libx264 -pix_fmt yuv420p -profile:v baseline -level 3.1 -c:a aac -b:a 128k -shortest -movflags +faststart src/assets/video/vasquez.mp4)",
-      "Bash(ffprobe -v error -show_entries format=duration -show_entries stream=codec_name,width,height -of default=noprint_wrappers=1 src/assets/video/vasquez.mp4)"
+      "Bash(ffprobe -v error -show_entries format=duration -show_entries stream=codec_name,width,height -of default=noprint_wrappers=1 src/assets/video/vasquez.mp4)",
+      "Bash(node -e \"const a=require\\('./app.json'\\).expo;console.log\\('ios:',a.ios.bundleIdentifier,'| android:',a.android.package\\)\")",
+      "Bash(sips -s format png -Z 512 \"Veterans' Voices App Logo.png\" --out website/assets/logo.png)"
     ],
     "additionalDirectories": [
       "/Users/brijeshtiwari/veterans-voices/assets/images"

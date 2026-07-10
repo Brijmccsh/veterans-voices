@@ -10,8 +10,12 @@ export function featuredStories(stories: Story[]): Story[] {
 }
 
 export function recentStories(stories: Story[], limit = 4): Story[] {
-  // user-added first (they sort to the front of the array), then seed order
-  return approvedStories(stories).slice(0, limit);
+  // user-added first (they sort to the front of the array), then seed order.
+  // Exclude featured stories so the Home "Featured" and "Recent" rows don't
+  // show the same card.
+  return approvedStories(stories)
+    .filter((s) => !s.featured)
+    .slice(0, limit);
 }
 
 export function findStory(stories: Story[], id: string): Story | undefined {
