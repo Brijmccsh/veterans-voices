@@ -22,7 +22,9 @@
   var BRANCHES = ['Army', 'Navy', 'Marine Corps', 'Air Force', 'Space Force', 'Coast Guard', 'National Guard', 'Other'];
 
   var STORIES = [
-    { id: '1', title: 'Signals in the Dark', veteran: 'James Halloran', rank: 'Radioman Second Class', branch: 'Navy', conflict: 'World War II', theater: 'Pacific Theater', years: '1942–1945', media: 'mixed', featured: true,
+    { id: 'nick-bernadino', title: 'Learning to Carry It', veteran: 'Nick Bernardino', rank: 'Machine Gunner', branch: 'Marine Corps', conflict: 'Vietnam War', theater: 'Da Nang', years: '1968–1969', media: 'mixed', featured: true,
+      summary: 'A Marine machine gunner in Vietnam, Nick Bernardino carried the memories of combat in silence for nearly fifty years — and now devotes himself to helping fellow veterans heal.' },
+    { id: '1', title: 'Signals in the Dark', veteran: 'James Halloran', rank: 'Radioman Second Class', branch: 'Navy', conflict: 'World War II', theater: 'Pacific Theater', years: '1942–1945', media: 'mixed',
       summary: 'A radioman aboard a heavy cruiser in the Pacific, Jim Halloran spent the war translating the sea into signals — and learned to carry the silences between them.' },
     { id: '2', title: 'The Long Road Out of Chosin', veteran: 'Raymond Delgado', rank: 'Corporal', branch: 'Marine Corps', conflict: 'Korean War', theater: 'Chosin Reservoir', years: '1950–1951', media: 'audio',
       summary: 'A Marine at the Chosin Reservoir, Corporal Ray Delgado marched out of the mountains in the coldest winter of the war — and never forgot the men beside him.' },

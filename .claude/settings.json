@@ -45,7 +45,13 @@
       "Bash(ffprobe -v error -show_entries format=duration -show_entries stream=codec_name,width,height -of default=noprint_wrappers=1 src/assets/video/vasquez.mp4)",
       "Bash(node -e \"const a=require\\('./app.json'\\).expo;console.log\\('ios:',a.ios.bundleIdentifier,'| android:',a.android.package\\)\")",
       "Bash(sips -s format png -Z 512 \"Veterans' Voices App Logo.png\" --out website/assets/logo.png)",
-      "Bash(git fetch *)"
+      "Bash(git fetch *)",
+      "Bash(ffprobe -v error -show_entries format=duration,bit_rate -show_entries stream=codec_name,channels,sample_rate -of default=noprint_wrappers=1 \"Nick Bernardino Recording.m4a\")",
+      "Bash(ffprobe -v error -show_entries format=duration -of csv=p=0 \"Nick Bernardino Recording.m4a\")",
+      "Bash(cp '/Users/brijeshtiwari/Downloads/Nick Bernardino Recording.m4a' /Users/brijeshtiwari/veterans-voices/src/assets/audio/bernadino.m4a)",
+      "Bash(cp '/Users/brijeshtiwari/Downloads/Nick Bernardino Recording.m4a' /Users/brijeshtiwari/veterans-voices/website/assets/audio/bernadino.m4a)",
+      "Bash(ffprobe -v error -show_entries format=duration -of csv=p=0 /Users/brijeshtiwari/veterans-voices/website/assets/audio/bernadino.m4a)",
+      "Bash(perl -0pi -e 's/Nick Bernadino/Nick Bernardino/g' website/index.html website/js/main.js)"
     ],
     "additionalDirectories": [
       "/Users/brijeshtiwari/veterans-voices/assets/images"
