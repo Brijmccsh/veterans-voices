@@ -36,6 +36,8 @@ export default function Contribute() {
   const [storyContent, setStoryContent] = useState('');
   const [photoUri, setPhotoUri] = useState<string | null>(null);
   const [videoUri, setVideoUri] = useState<string | null>(null);
+  const [audioAttached, setAudioAttached] = useState(false);
+  const [audioPlaying, setAudioPlaying] = useState(false);
 
   const canSubmit = !!(title.trim() && veteranName.trim() && branch && conflict && mediaType);
   const needsVideo = mediaType === 'video';
@@ -63,6 +65,8 @@ export default function Contribute() {
     setStoryContent('');
     setPhotoUri(null);
     setVideoUri(null);
+    setAudioAttached(false);
+    setAudioPlaying(false);
   };
 
   const submit = () => {
@@ -175,19 +179,62 @@ export default function Contribute() {
             </View>
           )}
           {needsAudioNote && (
-            <View style={styles.audioRow}>
-              <View style={styles.uploadIcon}>
-                <Ionicons name="mic-outline" size={20} color={colors.gold} />
-              </View>
-              <View style={{ flex: 1 }}>
-                <Text variant="body" weight="bold">
-                  Audio recording
-                </Text>
-                <Text variant="caption" color={colors.inkFaint}>
-                  The interview recording is added to this entry after review.
-                </Text>
-              </View>
-            </View>
+            <>
+              <PressableScale
+                onPress={() => {
+                  setAudioAttached(true);
+                  Haptics.selectionAsync();
+                }}
+                to={0.98}
+                style={styles.uploadRow}
+              >
+                <View style={styles.uploadIcon}>
+                  <Ionicons name="mic-outline" size={20} color={colors.gold} />
+                </View>
+                <View style={{ flex: 1 }}>
+                  <Text variant="body" weight="bold">
+                    Audio recording
+                  </Text>
+                  <Text variant="caption" color={colors.inkFaint}>
+                    {audioAttached ? 'Interview recording attached' : 'Attach the interview recording'}
+                  </Text>
+                </View>
+                <Ionicons name={audioAttached ? 'checkmark-circle' : 'cloud-upload-outline'} size={22} color={audioAttached ? colors.olive : colors.navy} />
+              </PressableScale>
+
+              {audioAttached && (
+                <View style={styles.audioPlayer}>
+                  <PressableScale
+                    onPress={() => {
+                      setAudioPlaying((p) => !p);
+                      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+                    }}
+                    to={0.9}
+                    style={styles.audioPlayBtn}
+                  >
+                    <Ionicons
+                      name={audioPlaying ? 'pause' : 'play'}
+                      size={20}
+                      color={colors.navyDeep}
+                      style={{ marginLeft: audioPlaying ? 0 : 2 }}
+                    />
+                  </PressableScale>
+                  <View style={{ flex: 1 }}>
+                    <View style={styles.audioScrub}>
+                      <View style={[styles.audioScrubFill, { width: audioPlaying ? '34%' : '0%' }]} />
+                    </View>
+                    <View style={styles.audioTimeRow}>
+                      <Text variant="caption" color={colors.onNavySoft}>
+                        {audioPlaying ? '0:23' : '0:00'}
+                      </Text>
+                      <Text variant="caption" color={colors.onNavySoft}>
+                        Interview recording
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              )}
+            </>
           )}
 
           <View style={{ height: spacing.lg }} />
@@ -264,16 +311,39 @@ const styles = StyleSheet.create({
     padding: spacing.md,
     marginTop: spacing.sm,
   },
-  audioRow: {
+  audioPlayer: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.md,
-    backgroundColor: 'rgba(15,35,64,0.04)',
+    backgroundColor: colors.navy,
     borderRadius: radius.md,
-    borderWidth: 1,
-    borderColor: colors.creamLine,
-    borderStyle: 'dashed',
     padding: spacing.md,
+    marginTop: spacing.sm,
+    ...shadow.hairline,
+  },
+  audioPlayBtn: {
+    width: 42,
+    height: 42,
+    borderRadius: 21,
+    backgroundColor: colors.gold,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  audioScrub: {
+    height: 4,
+    borderRadius: 3,
+    backgroundColor: colors.navyLine,
+    overflow: 'hidden',
+  },
+  audioScrubFill: {
+    height: '100%',
+    backgroundColor: colors.gold,
+    borderRadius: 3,
+  },
+  audioTimeRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 7,
   },
   uploadIcon: {
     width: 40,
